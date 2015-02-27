@@ -1,4 +1,5 @@
-class TagController < ApplicationController
+class VotesController < ApplicationController
+
   def new
   end
 
@@ -16,5 +17,6 @@ class TagController < ApplicationController
 
   def destroy
   end
+
 
 end

@@ -1,4 +1,4 @@
-class QuestionController < ApplicationController
+class AnswersController < ApplicationController
 
   def new
   end
@@ -17,6 +17,5 @@ class QuestionController < ApplicationController
 
   def destroy
   end
-
 
 end

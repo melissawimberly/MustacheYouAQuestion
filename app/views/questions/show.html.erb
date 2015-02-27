@@ -1,0 +1,18 @@
+<h1>Howdy!</h1>
+<div>
+	<h3><%= @question.title %></h3>
+</div><br>
+
+<div>
+	<h4><%= @question.description %></h4>
+</div>	
+
+Votes: <%= @question.votes.count %>
+
+<div>
+Tags: <% @question.tags.each do |tag| %>
+		<%= tag.name %>
+	<% end %>
+</div>
+
+
