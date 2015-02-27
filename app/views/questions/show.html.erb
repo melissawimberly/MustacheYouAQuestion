@@ -1,4 +1,35 @@
-<%= @question.title %>
-<%= @question.description %>
 
+<h1>Howdy!</h1>
+
+<div>
+	<h2><%= @question.title %></h2>
+  <div>
+	By: <%= link_to @question.user.username, user_path %>
+	<br><%= @question.description %>
+  </div>
+</div>
+
+<button type="button" class="btn btn-default btn-md">
+  <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span> 
+</button>
+
+
+<button type="button" class="btn btn-default btn-md">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+</button>
+
+
+<div>
+	Votes: <%= @question.votes.count %>
+</div>
+<div>
+	Tags: <% @question.tags.each do |tag| %>
+		<%= link_to tag.name, tag_path %>
+	<% end %>
+
+</div>
+
+
+Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+<br>
 
