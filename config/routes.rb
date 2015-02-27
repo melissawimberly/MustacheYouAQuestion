@@ -53,4 +53,15 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get '/test' => 'application#index'
+
+  #TODO convert into SessionController calls and StudentController calls
+  get '/' => 'auth#welcome'
+  get '/login' => "auth#get_login"
+  post '/login' => "auth#post_login"
+  get '/signup' => "auth#get_signup"
+  post '/signup' => "auth#post_signup"
+  get '/logout' => "auth#get_logout"
+
 end
