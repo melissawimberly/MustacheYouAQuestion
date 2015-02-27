@@ -5,7 +5,10 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.create(votes_params)
+    @vote = Vote.create(user_id: 1, vote_value: params[:vote_value])
+    question = Question.find(params[:question_id])
+    question.votes.push(@vote)
+    redirect_to question_path(question)
   end
 
   def show
