@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find_by(params[:question_id])
+    @question = Question.find_by(id: params[:id])
   end
 
 
