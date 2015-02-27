@@ -1,9 +1,10 @@
-class AnswerController < ApplicationController
+class CommentsController < ApplicationController
 
   def new
   end
 
   def create
+
   end
 
   def show
@@ -17,5 +18,4 @@ class AnswerController < ApplicationController
 
   def destroy
   end
-
 end

@@ -1,10 +1,10 @@
-class CommentController < ApplicationController
+class TagsController < ApplicationController
+
 
   def new
   end
 
   def create
-
   end
 
   def show
@@ -18,4 +18,6 @@ class CommentController < ApplicationController
 
   def destroy
   end
+
+
 end
