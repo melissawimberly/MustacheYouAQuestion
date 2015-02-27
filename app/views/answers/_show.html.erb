@@ -1,3 +1,15 @@
-<h1> This is the answers partials </h1>
+<div class="row">
+
+  <% @question.answers.each do |answer| %>
+
+  <p><%= answer.description %></p>
+  <%= answer.user.username %>
+  <%= render partial: "comments/show", locals: { answer: answer } %>
+
+
+  <% end %>
+
+
+</div>
 
 
