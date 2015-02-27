@@ -1,0 +1,16 @@
+<div class="profile">
+
+			<h2> Questions </h2>
+	<% @user.questions.each do |question| %>
+			<ul>
+			<li><%= link_to question.title, question_path(question.id) %></li>
+			</ul>
+
+		<% if current_user %>
+			<% "link to edit button" %>
+			<% "link to delete button" %>
+		<% end %>				
+
+	<% end %>		
+
+</div>
