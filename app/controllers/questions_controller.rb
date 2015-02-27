@@ -1,4 +1,5 @@
-class TagController < ApplicationController
+class QuestionsController < ApplicationController
+
   def new
   end
 
@@ -6,7 +7,9 @@ class TagController < ApplicationController
   end
 
   def show
+    @question = Question.find_by(params[:question_id])
   end
+
 
   def edit
   end
@@ -17,4 +20,7 @@ class TagController < ApplicationController
   def destroy
   end
 
+
 end
+
+
