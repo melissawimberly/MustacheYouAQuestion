@@ -1,5 +1,10 @@
 class QuestionsController < ApplicationController
 
+
+  def index
+    @questions = Question.last(10)
+  end
+
   def new
   end
 
