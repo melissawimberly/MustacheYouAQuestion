@@ -4,18 +4,19 @@
 	<h2><%= @question.title %></h2>
   <div>
 	By: <%= link_to @question.user.username, user_path %>
+	<br><%= link_to @question.votes question_votes_path %>
 	<br><%= @question.description %>
   </div>
 </div>
 
-<button type="button" class="btn btn-default btn-md">
+<!-- <button type="button" class="btn btn-default btn-md">
   <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span> 
-</button>
+</button> -->
 
 
-<button type="button" class="btn btn-default btn-md">
+<!-- <button type="button" class="btn btn-default btn-md">
   <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-</button>
+</button> -->
 
 
 <div>
