@@ -26,7 +26,8 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find_by(question_id: params[:question_id], user_id: session[:user_id])
-    @answer.update_attributes(description: params[:action][:description])
+    @answer.update_attributes(description: params[:description])
+    redirect_to "/questions/#{params[:question_id]}"
   end
 
   def destroy

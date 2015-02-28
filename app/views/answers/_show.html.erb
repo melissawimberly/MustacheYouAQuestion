@@ -9,9 +9,9 @@
   <%= answer.votes.count %>
 
   <% if current_user.id == answer.user_id %>
-    <%= form_for :answer, :url => { :action => "update" } do |f| %>
-      <%= f.text_area :description %>
-      <%= f.submit "update" %>
+    <%= form_tag(question_answer_path(@question.id, answer.id), method: :put) do %>
+      <%= text_area_tag :description %>
+      <%= submit_tag "ssssupdate" %>
   <% end %>
 
 
