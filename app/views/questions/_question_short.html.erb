@@ -17,7 +17,7 @@
       <div class="col-md-8">
         <h4><%= link_to question.title, question %></h4>
         <% question.tags.each do |tag| %>
-          <span class="pull-left field-margin"><%= render partial: "question_tag", locals: {tag: tag} %></span>
+          <span class="pull-left field-margin"><%= render partial: "questions/question_tag", locals: {tag: tag} %></span>
         <%end%>
         <span class="pull-right">asked <%= format_asked_time(question) %> <%= link_to question.user.username, question.user%></span>
       </div>

@@ -23,3 +23,14 @@ pineapples = Tag.create(name: 'pineapples')
 votes1 = Vote.create(vote_value: 1, user_id: 2)
 question_vote2 = QuestionVote.create(question_id:1, vote_id:1)
 
+t1 = Tag.create(name: "#beaches")
+t2 = Tag.create(name: "#summer")
+
+question_1.tags.push(t1)
+question_1.tags.push(t2)
+
+question_2.tags.push(pineapples)
+
+
+
+
