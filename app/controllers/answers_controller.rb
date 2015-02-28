@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
   end
 
   def update
-    @answer = Answer.find_by(question_id: params[:question_id], user_id: session[:user_id])
+    @answer = Answer.find_by(id: params[:id], user_id: session[:user_id])
 
     @answer.update_attributes(description: params[:description])
     redirect_to "/questions/#{params[:question_id]}"
