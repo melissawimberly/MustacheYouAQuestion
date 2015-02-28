@@ -10,7 +10,7 @@ class VotesController < ApplicationController
       answer.votes.delete(answer.votes.count - 1)
     end
 
-    redirect_to '/questions/2'
+    redirect_to question_path(@answer.question)
   end
 
   def create
