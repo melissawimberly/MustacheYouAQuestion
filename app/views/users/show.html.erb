@@ -17,7 +17,7 @@
 		<h2> Answers </h2>
 		<ul>
 			<% @user.answers.each do |answer| %>
-				<li><%= link_to answer.title, answer_path(answer.id) %></li>
+				<li><%= link_to answer.description, question_answers_path(answer.question, answer) %></li>
 			<% end %>
 		</ul>
 	</div>
