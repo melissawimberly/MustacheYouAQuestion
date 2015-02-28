@@ -8,15 +8,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-    question = Question.find(params[:question_id])
+    answer = Answer.find(params[:answer_id])
     if make_sure_that_user_logged_in
       #add comment
       user = current_user
       params[:comment][:user_id] = user.id
       comment = Comment.create(question_params())
-      question.comments.push(comment)
+      answer.comments.push(comment)
     end
-    redirect_to question_path(question)
+    redirect_to question_path(answer.question)
   end
 
   def show
