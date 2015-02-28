@@ -39,6 +39,15 @@ Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
 <br>
 <%= render partial: "answers/show", locals: { question: @question } %>
 
+<<<<<<< HEAD
 
+=======
+<% if current_user %>
+  <%= form_for([@question, @answer]) do |f| %>
+      <%= f.text_area :description %>
+      <%= f.submit "Answer" %>
+  <% end %>
+<% end %>
+>>>>>>> 18f25009024df13c95fe9b9613c6d65896e9cfff
 
 
