@@ -1,17 +1,22 @@
 <h1>Howdy!</h1>
 
+<div id="mustache">
+  <h1 class="vote-error"><%= flash[:notice] %></h1>
+  <!--  <img src="http://www.hdwallpapersos.com/wp-content/uploads/2014/10/6534e988d3627ac91ff2d1484c611943.jpeg" alt="Selleck" style="width:304px;height:228px"> -->
+</div>
+
 <div>
-	<h2><%= @question.title %></h2>
+  <h2><%= @question.title %></h2>
   <div>
-	By: <%= link_to @question.user.username, user_path %>
-	<br><%= @question.description %>
+  By: <%= link_to @question.user.username, user_path %>
+  <br><%= @question.description %>
   </div>
 </div>
+
 
 <!-- <button type="button" class="btn btn-default btn-md">
   <span class="glyphicon glyphicon-triangle-top" aria-hidden="true">+</span>
 </button> -->
-
 <%= button_to "+", question_votes_path(@question, :vote_value => 1) %>
   <h2><%= @sum %></h2>
 <%= button_to "-", question_votes_path(@question, :vote_value => -1) %>
