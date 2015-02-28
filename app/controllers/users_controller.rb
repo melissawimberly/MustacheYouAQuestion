@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(session[:user_id])
+    @user = User.find_by(id: params[:id])
     # @user.question.id 
   end
 
