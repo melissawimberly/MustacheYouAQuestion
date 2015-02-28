@@ -1,9 +1,15 @@
 <div class="row">
 
-  <% @question.answers.each do |answer| %>
-
+<% @question.answers.each do |answer| %>
+    <%=link_to "+", new_question_answer_vote_path(question, answer, vote_value: 1)%>
+  <%=link_to "-", new_question_answer_vote_path(question, answer, vote_value: -1) %>
   <p><%= answer.description %></p>
   <%= answer.user.username %>
+  <%= answer.votes.count %>
+  <br>
+  <br>
+
+
   <%= render partial: "comments/show", locals: { answer: answer } %>
 
 

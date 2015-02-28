@@ -65,11 +65,14 @@ Rails.application.routes.draw do
 
   #Other Routes
   resources :users
-  resources :questions do 
+  resources :questions do
     resources :tags, shallow: true
     resources :answers do
       resources :comments
       resources :votes
+      get '/upvote' => 'votes#upvote'
+      get '/downvote' => 'votes#downvote'
+
     end
     resources :votes
   end
