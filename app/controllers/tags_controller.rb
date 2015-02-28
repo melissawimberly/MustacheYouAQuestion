@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   def show
     tag = Tag.find(params[:id])
     @questions = tag.questions
-    redirect_to questions_path
+    render 'questions/index'
   end
 
   def edit
