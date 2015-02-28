@@ -27,17 +27,21 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    begin
+
+    # begin
       @question = Question.find_by(id: params[:id])
-      views = @question.view_count || 0
-      views +=1
-      @question.update_attribute(vote_count: views)
+
       @sum = QuestionVote.joins(:vote).where('question_id =?', @question.id).sum('votes.vote_value')
 
-    rescue Exception => e
-      #log the error and continue
-      p e
-    end
+    views = @question.view_count || 0
+      views +=1
+      @question.view_count = views;
+      @question.save
+
+    # rescue Exception => e
+    #   #log the error and continue
+    #   p e
+    # end
   end
 
 
