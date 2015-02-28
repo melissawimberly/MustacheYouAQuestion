@@ -1,0 +1,12 @@
+<h3>Top Questions</h3>
+<span class="field-margin"></span>
+<ul class="nav nav-tabs field-margin" >
+  <li role="presentation" class="active"><%= link_to "Latest", '?tab=latest'%></li>
+  <li role="presentation"><%= link_to "Week", '?tab=week'%></li>
+  <li role="presentation"><%= link_to "Month", '?tab=month'%></li>
+</ul>
+
+<% @questions.each do |question| %>
+  <%= render partial: "question_short", locals: {question: question} %>
+  <hr/>
+<%end%>
