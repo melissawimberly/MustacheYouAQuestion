@@ -1,14 +1,30 @@
 <div class="profile">
 
+	<div class="questions">
 	<h2> Questions </h2>
-	<% @user.questions.each do |question| %>
 		<ul>
-			<li><%= link_to question.title, question_path(question.id) %></li>
+			<% @user.questions.each do |question| %>
+				<li><%= link_to question.title, question_path(question.id) %></li>
+				<% if current_user %>
+					<%= link_to "Edit your profile", "users#edit" %>
+					<%= link_to "Delete your profile", "users#destroy" %>
+				<% end %>
+			<% end %>				
 		</ul>
+	</div>
 
-		<% if current_user %>
-			<%= link_to "Edit your profile", "users#edit" %>
-			<%= link_to "Delete your profile", "users#destroy" %>
-		<% end %>				
-	<% end %>		
+	<div class="answers">
+		<h2> Answers </h2>
+		<ul>
+			<% @user.answers.each do |answer| %>
+				<li><%= link_to answer.description, question_answers_path(answer.question, answer) %></li>
+			<% end %>
+		</ul>
+	</div>
+
+<!-- this is the sum of all of your upvotes for anything -->
+	<div class="reputation">
+		<h2> Reputation </h2>
+		<h4><%= @user.reputation %></h4>
+	</div>
 </div>
