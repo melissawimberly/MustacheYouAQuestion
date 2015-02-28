@@ -24,25 +24,25 @@ class AuthController < ApplicationController
 
   def post_login
     #TODO remove this - for test only
-    if true
-      redirect_to '/login?error=1'
-      return false
-    end
+    # if true
+    #   redirect_to '/login?error=1'
+    #   return false
+    # end
 
     user = User.find_by({email: params[:user][:email]})
 
-    if (student == nil || !student.authenticate(params[:student][:password]))
+    if (user == nil || !user.authenticate(params[:user][:password]))
 
       redirect_to '/login?error=1'
     else
-      session[:user_id] = student.id
-      redirect_to "/groups/#{student.group.id}/schedules"
+      session[:user_id] = user.id
+      redirect_to questions_path
     end
   end
 
 
   def get_signup
-    @groups = Group.all
+
     if params[:error]
       @error = "Invalid account information is provided. Please check your entries and try again"
     end
@@ -54,14 +54,22 @@ class AuthController < ApplicationController
     begin
       #verify that password and confirmation password match
       #verify that all info is provided
-      params[:user].delete("confirmpassword")
-      user = User.create(params[:user]);
-      redirect_to "/groups/#{student.group.id}/schedules"
+      user = User.create(user_params);
+      session[:user_id] = user.id
+      redirect_to questions_path
     rescue Exception => e
       p e
       redirect_to '/signup?error=2'
     end
   end
+
+
+  private
+
+
+   def user_params
+    params.require(:user).permit(:username, :email, :password)
+   end
 
 
 end
