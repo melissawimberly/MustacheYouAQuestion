@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   #TODO convert into SessionController calls and UserController calls
   get '/login' => "auth#get_login"
   post '/login' => "auth#post_login"
-  get '/signup' => "auth#get_signup"
+  get '/signup' => "auth#get_signup", as: :signup_path
   post '/signup' => "auth#post_signup"
   get '/logout' => "auth#get_logout"
 
@@ -74,5 +74,7 @@ Rails.application.routes.draw do
     end
     resources :votes
   end
+
+
 
 end

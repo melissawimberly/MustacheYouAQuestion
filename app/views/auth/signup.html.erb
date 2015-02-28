@@ -2,28 +2,19 @@
   <form class="form-signin" method="POST" action="./signup">
           <h2 class="form-signin-heading">New Account</h2>
 
-          <label for="inputEmail" class="sr-only">First Name:</label>
-          <input id="inputFName" class="form-control field-margin" placeholder="First Name" name="user[fname]" required autofocus>
 
-          <label for="inputEmail" class="sr-only">Last Name:</label>
-          <input id="inputLName" class="form-control field-margin" placeholder="Last Name" name="user[lname]" required >
+
+          <label for="inputUsername" class="sr-only">Username:</label>
+          <input id="inputUsername" class="form-control field-margin" placeholder="Username" name="user[username]" required >
 
           <label  class="sr-only">Email address</label>
           <input type="email" id="inputEmail" class="form-control field-margin" placeholder="Email address" name="user[email]"required >
           <label for="inputPassword" class="sr-only">Password</label>
           <input type="password" id="inputPassword" class="form-control field-margin" placeholder="Password" name="user[password]"required>
-          <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-          <input type="password" id="inputConfirmPassword" class="form-control field-margin" placeholder="Confirm Password" name="user[confirmpassword]" required>
+          <label for="inputPasswordConfirmation" class="sr-only">Confirm Password</label>
+          <input type="password" id="inputPasswordConfirmation" class="form-control field-margin" placeholder="Confirm Password" name="user[password_confirmation]" required>
 
-          <div class="form-group">
-            <label for="sel1" >Cohort:</label>
-            <select class="form-control" id="sel1" name="user[group_id]">
-              <option >&lt;Select Your Cohort&gt;</option>
-              <% @groups.each do |group| %>
-                  <option value="<%=group.id%>"><%=group.name%></option>
-              <%end%>
-            </select>
-        </div>
+
 
           <button class="btn btn-lg btn-primary btn-block field-margin"  type="submit">Create New Account</button>
   </form>
