@@ -6,10 +6,18 @@
 			<% @user.questions.each do |question| %>
 				<li><%= link_to question.title, question_path(question.id) %></li>
 				<% if current_user %>
-					<%= link_to "Edit your profile", "users#edit" %>
-					<%= link_to "Delete your profile", "users#destroy" %>
+
+					<%= form_for(question, html: {method: :delete}) do |f|%>
+						<%= f.submit "Delete Question", class: "btn btn-danger pull-right" %>
+					<% end %>
+
+ 					<%= form_for(question, url: edit_question_path(question), method: "get") do |f|%>
+						<%= f.submit "Edit Question", class: "btn btn-warning pull-right" %>
+					<% end %>
+
+
+			<% end %>
 				<% end %>
-			<% end %>				
 		</ul>
 	</div>
 
@@ -28,3 +36,4 @@
 		<h4><%= @user.reputation %></h4>
 	</div>
 </div>
+

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   def reputation
 		vote_tally = []
-  	
+
   	self.answers.each do |answer|
   		answer.answer_votes.each do |answer_vote|
   			vote_tally << answer_vote.vote.vote_value
@@ -26,6 +26,5 @@ class User < ActiveRecord::Base
   	end
 
   	vote_tally.inject(:+) || 0
-    # vote_tally
   end
 end
