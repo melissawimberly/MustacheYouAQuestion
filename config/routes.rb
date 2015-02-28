@@ -70,8 +70,6 @@ Rails.application.routes.draw do
     resources :answers do
       resources :comments
       resources :votes
-      get '/upvote' => 'votes#upvote'
-      get '/downvote' => 'votes#downvote'
 
     end
     resources :votes
