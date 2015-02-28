@@ -17,6 +17,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find_by(id: params[:id])
+    @sum = QuestionVote.joins(:vote).where('question_id =?', @question.id).sum('votes.vote_value')
+    
   end
 
 
