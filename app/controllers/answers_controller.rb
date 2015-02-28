@@ -31,6 +31,9 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    @answer = Answer.find_by(question_id: params[:question_id], user_id: session[:user_id])
+    @answer.destroy
+    redirect_to "/questions/#{params[:question_id]}"
   end
 
 end

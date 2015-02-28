@@ -11,9 +11,12 @@
   <% if current_user.id == answer.user_id %>
     <%= form_tag(question_answer_path(@question.id, answer.id), method: :put) do %>
       <%= text_area_tag :description %>
-      <%= submit_tag "ssssupdate" %>
-  <% end %>
+      <%= submit_tag "update" %>
+    <% end %>
 
+    <%= form_tag(question_answer_path(@question.id, answer.id), method: :delete) do |f| %>
+      <%= submit_tag "delete" %>
+    <% end %>
 
   <% end %>
 
