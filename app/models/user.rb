@@ -8,4 +8,24 @@ class User < ActiveRecord::Base
   has_many :votes, through: :answer_votes
   has_many :question_votes
   has_many :votes, through: :question_votes
+
+
+  def reputation
+		vote_tally = []
+  	
+  	self.answers.each do |answer|
+  		answer.answer_votes.each do |answer_vote|
+  			vote_tally << answer_vote.vote.vote_value
+  		end
+  	end
+
+  	self.questions.each do |question|
+  		question.question_votes.each do |question_vote|
+  			vote_tally << question_vote.vote.vote_value
+  		end
+  	end
+
+  	vote_tally.inject(:+) || 0
+    # vote_tally
+  end
 end
