@@ -69,12 +69,12 @@ ActiveRecord::Schema.define(version: 20150226230424) do
   add_index "question_votes", ["vote_id"], name: "index_question_votes_on_vote_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.text     "description", null: false
-    t.integer  "view_count"
+    t.string   "title",                   null: false
+    t.text     "description",             null: false
+    t.integer  "view_count",  default: 0
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree

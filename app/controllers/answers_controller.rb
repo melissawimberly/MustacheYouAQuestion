@@ -8,8 +8,10 @@ class AnswersController < ApplicationController
   def create
     @question = Question.find(params[:question_id])
     @id = session[:user_id]
-    @answer = Answer.create(user_id: , description: params[:description], question_id: params[:question_id])
     p'*'*50
+    p session[:user_id]
+    @answer = Answer.create(user_id: session[:user_id] , description: params[:answer][:description], question_id: params[:question_id])
+
     p params[:question_id]
     redirect_to "/questions/#{params[:question_id]}"
   end
@@ -26,10 +28,5 @@ class AnswersController < ApplicationController
 
   def destroy
   end
-
-   def answer_params
-    params.require(:answer).permit(:description, :user_id, :question_id)
-  end
-
 
 end

@@ -9,7 +9,7 @@
 </div>
 
 <!-- <button type="button" class="btn btn-default btn-md">
-  <span class="glyphicon glyphicon-triangle-top" aria-hidden="true">+</span> 
+  <span class="glyphicon glyphicon-triangle-top" aria-hidden="true">+</span>
 </button> -->
 
 <%= button_to "+", question_votes_path(@question, :vote_value => 1) %>
@@ -35,4 +35,12 @@
 Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
 <br>
 <%= render partial: "answers/show", locals: { question: @question } %>
+
+<% if current_user %>
+  <%= form_for([@question, @answer]) do |f| %>
+      <%= f.text_area :description %>
+      <%= f.submit "Answer" %>
+  <% end %>
+<% end %>
+
 

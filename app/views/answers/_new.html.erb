@@ -1,0 +1,9 @@
+<div class="row">
+
+
+  <%= form_for @answer, question_answers_path(@answer), :method => :post do |f| %>
+    <%= f.text_area :description, size: "300x200"%>
+    <%= f.submit "Answer" %>
+  <% end %>
+
+</div>

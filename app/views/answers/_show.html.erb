@@ -1,4 +1,4 @@
-<div class="row">
+ <div class="row">
 
 <% @question.answers.each do |answer| %>
     <%=link_to "+", new_question_answer_vote_path(question, answer, vote_value: 1)%>
