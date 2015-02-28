@@ -13,6 +13,7 @@
 </button> -->
 
 <%= button_to "+", question_votes_path(@question, :vote_value => 1) %>
+<%= button_to "-", question_votes_path(@question, :vote_value => -1) %>
 
 
 
@@ -22,7 +23,7 @@
 
 
 <div>
-	Votes: <%= @question.votes.count %>
+	Votes: <%= @sum %>
 </div>
 <div>
 	Tags: <% @question.tags.each do |tag| %>
