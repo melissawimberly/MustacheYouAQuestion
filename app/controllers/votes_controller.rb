@@ -32,9 +32,4 @@ class VotesController < ApplicationController
   def destroy
   end
 
-
-  def upvote
-    vote = Vote.new(user_id: 1, vote_value: params[:vote_value]
-  end
-
 end
