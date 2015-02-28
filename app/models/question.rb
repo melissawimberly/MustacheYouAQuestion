@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
   class << self
 
     def get_trending(limit)
-       questions = Question.order('view_count DESC').limit(limit)
+       questions = Question.order('view_count DESC,updated_at DESC').limit(limit)
     end
 
     def get_most_voted_on(limit)
