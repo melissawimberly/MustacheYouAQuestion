@@ -21,5 +21,5 @@ comment_1 = Comment.create(content: "ahhhhh noooo", user_id:2 , answer_id: 1)
 pineapples = Tag.create(name: 'pineapples')
 
 votes1 = Vote.create(vote_value: 1, user_id: 2)
-
+question_vote2 = QuestionVote.create(question_id:1, vote_id:1)
 
