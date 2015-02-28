@@ -25,4 +25,8 @@ module QuestionHelper
     return 0 if question.view_count = nil
     question.view_count
   end
+
+  def question_tab_status(tab)
+      return "class=active" if @active_question_tab == tab
+  end
 end
