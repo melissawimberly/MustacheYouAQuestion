@@ -4,15 +4,16 @@
 
 <div class="row">
   <div class="col-md-10">
-  <%= button_to "Ask Question", new_question_path, class: "btn btn-warning pull-right" %>
+  <%= link_to "Ask Question", new_question_path, class: "btn btn-warning pull-right" %>
   </div>
 </div>
 
 <span class="field-margin"></span>
 <ul class="nav nav-tabs field-margin" >
-  <li role="presentation" class="active"><%= link_to "Latest", '?tab=latest'%></li>
-  <li role="presentation"><%= link_to "Week", '?tab=week'%></li>
-  <li role="presentation"><%= link_to "Month", '?tab=month'%></li>
+
+  <li role="presentation" <%=question_tab_status(GlobalConstants::TAB_OPTION_LATEST)%> > <%= link_to "Latest", '?tab='+GlobalConstants::TAB_OPTION_LATEST%></li>
+  <li role="presentation" <%=question_tab_status(GlobalConstants::TAB_OPTION_TRENDING)%> > <%= link_to "Trending", '?tab='+GlobalConstants::TAB_OPTION_TRENDING%></li>
+  <li role="presentation" <%=question_tab_status(GlobalConstants::TAB_OPTION_MOST_VOTED)%> > <%= link_to "Most Viewed", '?tab='+GlobalConstants::TAB_OPTION_MOST_VOTED %></li>
 </ul>
 
 <% @questions.each do |question| %>

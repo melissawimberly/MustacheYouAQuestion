@@ -1,0 +1,8 @@
+<%= form_for [answer.question, answer, comment]  do |f| %>
+  <div class="row">
+  <%= f.text_area(:content, size: '100x5') %>
+  </div>
+  <div class="row field-margin-top">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

@@ -12,6 +12,8 @@ user_2 = User.create(email: 'user_2@gmail.com', username:'user_2', password: "12
 
 question_1 = Question.create(user_id: 1, title: "fun in the sun?", description: "how do I have fun anymore?", view_count: 0)
 question_2 = Question.create(user_id: 1, title: "pineapples?", description: "are they viable?", view_count: 1)
+question_3 = Question.create(user_id: 1, title: "kiwi?", description: "are they viable or not???", view_count: 1)
+
 
 answer_1 = Answer.create(description: 'yes they really are', user_id: 2, question_id: 2)
 answer_2 = Answer.create(description: "you can't you're old!", user_id: 2, question_id: 1)

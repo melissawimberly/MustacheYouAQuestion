@@ -9,10 +9,12 @@
 </div>
 
 <!-- <button type="button" class="btn btn-default btn-md">
-  <span class="glyphicon glyphicon-triangle-top" aria-hidden="true">+</span> 
+  <span class="glyphicon glyphicon-triangle-top" aria-hidden="true">+</span>
 </button> -->
 
 <%= button_to "+", question_votes_path(@question, :vote_value => 1) %>
+  <h2><%= @sum %></h2>
+<%= button_to "-", question_votes_path(@question, :vote_value => -1) %>
 
 
 
@@ -22,11 +24,13 @@
 
 
 <div>
-	Votes: <%= @question.votes.count %>
+
 </div>
 <div>
 	Tags: <% @question.tags.each do |tag| %>
-		<%= link_to tag.name, tag_path %>
+		<!--<%= link_to tag.name, tag_path %>-->
+    <!-- GG Style tags -->
+    <%= render partial: "question_tag", locals: {tag: tag} %>
 	<% end %>
 
 </div>
@@ -35,4 +39,13 @@
 Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
 <br>
 <%= render partial: "answers/show", locals: { question: @question } %>
+
+
+<% if current_user %>
+  <%= form_tag(question_answers_path(@question)) %>
+      <%= text_area_tag :description %>
+      <%= submit_tag "Answer" %>
+
+<% end %>
+
 
