@@ -14,12 +14,14 @@ class VotesController < ApplicationController
   end
 
   def create
-    p "HHHHHHHHHH"
+
     @vote = Vote.create(user_id: current_user.id, vote_value: params[:vote_value])
     question = Question.find(params[:question_id])
     question.votes.push(@vote)
+
+    p '*' *60
    redirect_to question_path(question)
-    
+
   end
 
   def show
@@ -39,6 +41,6 @@ class VotesController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:vote_value, :user_id)
-  end 
+  end
 
 end
