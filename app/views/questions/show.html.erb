@@ -34,4 +34,5 @@
 
 Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
 <br>
+<%= render partial: "answers/show", locals: { question: @question } %>
 

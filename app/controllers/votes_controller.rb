@@ -1,7 +1,16 @@
 class VotesController < ApplicationController
 
   def new
-    @vote = Vote.new
+    vote = Vote.new(user_id: 1, vote_value: params[:vote_value])
+    answer = Answer.find( params[:answer_id])
+
+    if vote.vote_value == 1
+      answer.votes.push(vote)
+    else
+      answer.votes.delete(answer.votes.count - 1)
+    end
+
+    redirect_to '/questions/2'
   end
 
   def create
@@ -24,9 +33,10 @@ class VotesController < ApplicationController
   end
 
 
-  private 
+  private
 
   def vote_params
     params.require(:vote).permit(:vote_value, :user_id)
   end 
+
 end
