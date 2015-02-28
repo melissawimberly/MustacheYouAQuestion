@@ -21,8 +21,8 @@ module QuestionHelper
     formated_string<<" ago"
   end
 
-  def get_vote_count(question)
-    return 0 if question.view_count = nil
+  def get_view_count(question)
+    return 0 if question.view_count == nil
     question.view_count
   end
 end
