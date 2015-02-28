@@ -17,9 +17,13 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @question = Question.new
   end
 
   def create
+    params[:question][:user_id] = current_user.id
+    @question = Question.create(question_params)
+    redirect_to questions_path
   end
 
   def show
@@ -28,6 +32,8 @@ class QuestionsController < ApplicationController
       views = @question.view_count || 0
       views +=1
       @question.update_attribute(vote_count: views)
+      @sum = QuestionVote.joins(:vote).where('question_id =?', @question.id).sum('votes.vote_value')
+
     rescue Exception => e
       #log the error and continue
       p e

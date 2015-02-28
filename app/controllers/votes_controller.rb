@@ -14,10 +14,12 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.create(user_id: 1, vote_value: params[:vote_value])
+    p "HHHHHHHHHH"
+    @vote = Vote.create(user_id: current_user.id, vote_value: params[:vote_value])
     question = Question.find(params[:question_id])
     question.votes.push(@vote)
-    redirect_to question_path(question)
+   redirect_to question_path(question)
+    
   end
 
   def show
@@ -28,7 +30,7 @@ class VotesController < ApplicationController
 
   def update
   end
-
+  ####
   def destroy
   end
 
