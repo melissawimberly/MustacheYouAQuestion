@@ -8,6 +8,9 @@ class TagsController < ApplicationController
   end
 
   def show
+    tag = Tag.find(params:id)
+    @questions = tag.questions
+    redirect_to questions_path
   end
 
   def edit

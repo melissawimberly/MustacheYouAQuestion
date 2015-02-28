@@ -9,7 +9,7 @@
 </div>
 
 <!-- <button type="button" class="btn btn-default btn-md">
-  <span class="glyphicon glyphicon-triangle-top" aria-hidden="true">+</span> 
+  <span class="glyphicon glyphicon-triangle-top" aria-hidden="true">+</span>
 </button> -->
 
 <%= button_to "+", question_votes_path(@question, :vote_value => 1) %>
@@ -26,7 +26,9 @@
 </div>
 <div>
 	Tags: <% @question.tags.each do |tag| %>
-		<%= link_to tag.name, tag_path %>
+		<!--<%= link_to tag.name, tag_path %>-->
+    <!-- GG Style tags -->
+    <%= render partial: "question_tag", locals: {tag: tag} %>
 	<% end %>
 
 </div>
@@ -35,4 +37,7 @@
 Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
 <br>
 <%= render partial: "answers/show", locals: { question: @question } %>
+
+
+
 
