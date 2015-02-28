@@ -1,28 +1,35 @@
 
 
+
+<h1> Answers </h1>
 <% @question.answers.each do |answer| %>
- <div style="margin-top:50px">
-    <%=link_to "+", new_question_answer_vote_path(question, answer, vote_value: 1)%>
-  <%=link_to "-", new_question_answer_vote_path(question, answer, vote_value: -1) %>
-  <p><%= answer.description %></p>
-  <%= answer.user.username %>
-  <%= answer.votes.count %>
+ <div class="container">
 
-  <% if current_user.id == answer.user_id %>
-    <%= form_tag(question_answer_path(@question.id, answer.id), method: :put) do %>
-      <%= text_area_tag :description %>
-      <%= submit_tag "update" %>
-    <% end %>
+      <%=link_to "+", new_question_answer_vote_path(question, answer, vote_value: 1)%>
+      <%=link_to "-", new_question_answer_vote_path(question, answer, vote_value: -1) %>
+      <p><%= answer.description %></p>
+      <p>By: <%= answer.user.username %></p>
 
-    <%= form_tag(question_answer_path(@question.id, answer.id), method: :delete) do |f| %>
-      <%= submit_tag "delete" %>
-    <% end %>
+      <p>Votes:<%= answer.votes.count %></p>
+      <p>Answered: <%= answer.created_at.strftime('%m-%d-%Y') %> at <%= answer.created_at.strftime(' %H:%M:%S') %></p>
 
-  <% end %>
+      <% if current_user.id == answer.user_id %>
+        <%= form_tag(question_answer_path(@question.id, answer.id), method: :put) do %>
+          <%= text_area_tag :description %>
+          <%= submit_tag "update" %>
+        <% end %>
+
+        <%= form_tag(question_answer_path(@question.id, answer.id), method: :delete) do |f| %>
+          <%= submit_tag "delete" %>
+        <% end %>
+
+      <% end %>
+
+  </div>
 
   <%= render partial: "comments/show", locals: { answer: answer } %>
 
-  </div>
+
 
 
   <% end %>
