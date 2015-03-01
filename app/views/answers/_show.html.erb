@@ -8,9 +8,9 @@
 <% @question.answers.each do |answer| %>
 <div class="row">
   <div class="col-md-1">
-    <div class:"field-margin"><%=button_to "+", new_question_answer_vote_path(question, answer, vote_value: 1) %></div>
+    <div class:"field-margin"><%=button_to "+", question_answer_votes_path(question, answer, vote_value: 1, is_a: 1) %></div>
     <h2><%=answer.votes.length%></h2>
-    <div class:"field-margin"><%=button_to "-", new_question_answer_vote_path(question, answer, vote_value: -1) %></div>
+    <div class:"field-margin"><%=button_to "-", question_answer_votes_path(question, answer, vote_value: -1, is_a: 1) %></div>
   </div>
 <div>
 
