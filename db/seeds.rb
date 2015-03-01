@@ -37,6 +37,8 @@ question_1.tags.push(t2)
 
 question_2.tags.push(pineapples)
 
+answer_1.comments.push(comment_1)
+
 
 
 
