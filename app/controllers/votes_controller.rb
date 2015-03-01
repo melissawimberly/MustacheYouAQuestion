@@ -14,18 +14,22 @@ class VotesController < ApplicationController
   end
 
   def create
+
     p params
     @vote = Vote.create(user_id: current_user.id, vote_value: params[:vote_value])
     question = Question.find(params[:question_id])
-    if params[:is_a]
-      answer = Answer.find(params[:answer_id])
-      answer.votes.push(@vote)
+    if current_user == nil
+            flash[:notice] = "You Mustache Login To Do That!"
     else
-      question.votes.push(@vote)
+          if params[:is_a]
+            answer = Answer.find(params[:answer_id])
+            answer.votes.push(@vote)
+          else
+            question.votes.push(@vote)
+          end
     end
 
    redirect_to question_path(question)
-
   end
 
   def show
