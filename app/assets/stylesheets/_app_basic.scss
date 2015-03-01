@@ -31,6 +31,27 @@ body{
     margin-top: 1%;
 }
 
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
 .vote-error{
 	color: red;
+}
+
+.questions{
+
+}
+.questions li{
+  height: 50px;
+  margin: 5px;
+}
+
+.questions a{
+  font-size: 1.5em;
+
+}
+.right-margin{
+  margin-right: 1%;
 }

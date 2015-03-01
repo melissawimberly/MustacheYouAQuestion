@@ -1,48 +1,54 @@
 
 
+<div class="row">
+  <diV class="col-md-1 col-centered"> <h4> Answers </h4></div>
+</div>
 
-<h3> Answers </h3>
+
 <% @question.answers.each do |answer| %>
- <div class="container">
-
-      <%=link_to "+", new_question_answer_vote_path(question, answer, vote_value: 1)%>
-      <%=link_to "-", new_question_answer_vote_path(question, answer, vote_value: -1) %>
-      <p><%= answer.description %></p>
-      <p>By: <%= answer.user.username %></p>
-
-      <p>Votes:<%= answer.votes.count %></p>
-      <p>Answered: <%= answer.created_at.strftime('%m-%d-%Y') %> at <%= answer.created_at.strftime(' %H:%M:%S') %></p>
-      <% if current_user %>
-        <% if current_user.id == answer.user_id %>
-          <%= form_tag(question_answer_path(@question.id, answer.id), method: :put) do %>
-            <%= text_area_tag :description %>
-            <%= submit_tag "update" %>
-          <% end %>
-
-          <%= form_tag(question_answer_path(@question.id, answer.id), method: :delete) do |f| %>
-            <%= submit_tag "delete" %>
-          <% end %>
-        <% end %>
-
-      <% end %>
-
+<div class="row">
+  <div class="col-md-1">
+    <div class:"field-margin"><%=button_to "+", question_answer_votes_path(question, answer, vote_value: 1, is_a: 1) %></div>
+    <h2><%=answer.votes.length%></h2>
+    <div class:"field-margin"><%=button_to "-", question_answer_votes_path(question, answer, vote_value: -1, is_a: 1) %></div>
   </div>
+<div>
+
+ <div class="row">
+  <div class="col-md-offset-2 col-md-8">
+              <div><%= answer.description %></div>
+              <div>By: <%= answer.user.username %></div>
+
+              <div>Votes:<%= answer.votes.count %></div>
+              <div>Answered: <%= answer.created_at.strftime('%m-%d-%Y') %> at <%= answer.created_at.strftime(' %H:%M:%S') %></div>
+              <% if current_user %>
+                <% if current_user.id == answer.user_id %>
+                  <%= form_tag(question_answer_path(@question.id, answer.id), method: :put) do %>
+                    <%= text_area_tag :description %>
+                    <%= submit_tag "update" %>
+                  <% end %>
+
+                  <%= form_tag(question_answer_path(@question.id, answer.id), method: :delete) do |f| %>
+                    <%= submit_tag "delete" %>
+                  <% end %>
+                <% end %>
+
+              <% end %>
+
+          </div>
 
 
-      <!-- ADD COMMENTS -->
-    <div class="row">
-      <div class="col-md-offset-4 col-md-8">
-        <%= link_to "Add Comment", new_question_answer_comment_path(answer.question, answer)%>
-        <% answer.comments_desc.each do |comment|%>
-          <%= render partial: "comments/show", locals: { comment: comment } %>
-        <%end%>
-      </div>
-    </div>
-
-
-
+          <!-- ADD COMMENTS -->
+        <div class="row">
+          <div class="col-md-offset-4 col-md-8">
+            <%= link_to "Add Comment", new_question_answer_comment_path(answer.question, answer)%>
+            <% answer.comments_desc.each do |comment|%>
+              <%= render partial: "comments/show", locals: { comment: comment } %>
+            <%end%>
+          </div>
+        </div>
   <% end %>
-
+</div>
 
 
 

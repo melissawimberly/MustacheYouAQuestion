@@ -5,15 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+questions = ["What is the best beach?", "How did Google get its name?","How much does Britney Spears weigh?", "I've overhauled, but the car still won't start?"]
+description = "Long Description " * 10
 
 user_1 = User.create(email: 'user_1@gmail.com', username:'user_1', password: "123")
 user_2 = User.create(email: 'user_2@gmail.com', username:'user_2', password: "123")
 
-question_1 = Question.create(user_id: 1, title: "fun in the sun?", description: "how do I have fun anymore?", view_count: 0)
-question_2 = Question.create(user_id: 1, title: "pineapples?", description: "are they viable?", view_count: 1)
-question_3 = Question.create(user_id: 1, title: "kiwi?", description: "are they viable or not???", view_count: 1)
+question_1 = Question.create(user_id: 1, title: "fun in the sun?", description: "how do I have fun anymore?", view_count: 100)
+question_2 = Question.create(user_id: 1, title: "pineapples?", description: "are they viable?", view_count: 88)
+question_3 = Question.create(user_id: 1, title: "kiwi?", description: "are they viable or not???", view_count: 65)
 
+100.times do
+  Question.create(user_id: 1, title: questions.sample, description: description, view_count: 1)
+end
 
 answer_1 = Answer.create(description: 'yes they really are', user_id: 2, question_id: 2)
 answer_2 = Answer.create(description: "you can't you're old!", user_id: 2, question_id: 1)
@@ -24,4 +28,17 @@ pineapples = Tag.create(name: 'pineapples')
 
 votes1 = Vote.create(vote_value: 1, user_id: 2)
 question_vote2 = QuestionVote.create(question_id:1, vote_id:1)
+
+t1 = Tag.create(name: "#beaches")
+t2 = Tag.create(name: "#summer")
+
+question_1.tags.push(t1)
+question_1.tags.push(t2)
+
+question_2.tags.push(pineapples)
+
+answer_1.comments.push(comment_1)
+
+
+
 

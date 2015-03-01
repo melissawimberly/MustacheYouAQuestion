@@ -4,12 +4,12 @@
 	<h2> Questions </h2>
 		<ul>
 			<% @user.questions.each do |question| %>
-				<li><%= link_to question.title, question_path(question.id) %></li>
+				<li><%= link_to question.title, question_path(question.id) %>
 				<% if current_user %>
 
 					<%= form_for(question, html: {method: :delete}) do |f|%>
 						<%= f.submit "Delete Question", class: "btn btn-danger pull-right" %>
-					<% end %>
+					<% end %></span>
 
  					<%= form_for(question, url: edit_question_path(question), method: "get") do |f|%>
 						<%= f.submit "Edit Question", class: "btn btn-warning pull-right" %>
@@ -17,7 +17,9 @@
 
 
 			<% end %>
-				<% end %>
+			</li>
+			<% end %>
+
 		</ul>
 	</div>
 

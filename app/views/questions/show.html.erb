@@ -1,56 +1,55 @@
-<h1>Howdy!</h1>
 
 <div id="mustache">
   <h1 class="vote-error"><%= flash[:notice] %></h1>
   <!--  <img src="http://www.hdwallpapersos.com/wp-content/uploads/2014/10/6534e988d3627ac91ff2d1484c611943.jpeg" alt="Selleck" style="width:304px;height:228px"> -->
 </div>
 
-<div>
-  <h2><%= @question.title %></h2>
-  <div>
-  By: <%= link_to @question.user.username, user_path %>
-  <br><%= @question.description %>
-  </div>
-</div>
-
-
-<!-- <button type="button" class="btn btn-default btn-md">
-  <span class="glyphicon glyphicon-triangle-top" aria-hidden="true">+</span>
-</button> -->
+<div class="row pull-left">
 <%= button_to "+", question_votes_path(@question, :vote_value => 1) %>
   <h2><%= @sum %></h2>
 <%= button_to "-", question_votes_path(@question, :vote_value => -1) %>
-
+</div>
 
 
 <!-- <button type="button" class="btn btn-default btn-md">
   <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
 </button> -->
 
-
-<div>
-
+<div class="row pull-right">
+  <div class="row">
+  <h2><%= @question.title %></h2>
+  <div>
+  By: <%= link_to @question.user.username, user_path(@question.user) %>
+  <br><%= @question.description %>
+  </div>
 </div>
-<div>
-	Tags: <% @question.tags.each do |tag| %>
-		<!--<%= link_to tag.name, tag_path %>-->
-    <!-- GG Style tags -->
-    <%= render partial: "question_tag", locals: {tag: tag} %>
-	<% end %>
+  <div class="col-md-10">
+  <div class="row">
+  	 <% @question.tags.each do |tag| %>
+  		<!--<%= link_to tag.name, tag_path %>-->
+      <!-- GG Style tags -->
+      <%= render partial: "question_tag", locals: {tag: tag} %>
+  	<% end %>
 
+  </div>
+
+  <div class="row">
+    Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+  </div>
+
+  <div class="row">
+    <%= render partial: "answers/show", locals: { question: @question } %>
+  </div>
+
+  <div class="row">
+    <% if current_user %>
+      <%= form_tag(question_answers_path(@question)) %>
+          <%= text_area_tag :description %>
+          <%= submit_tag "Answer" %>
+
+    <% end %>
+  </div>
 </div>
-
-
-Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-<br>
-<%= render partial: "answers/show", locals: { question: @question } %>
-
-
-<% if current_user %>
-  <%= form_tag(question_answers_path(@question)) %>
-      <%= text_area_tag :description %>
-      <%= submit_tag "Answer" %>
-
-<% end %>
+</div>
 
 

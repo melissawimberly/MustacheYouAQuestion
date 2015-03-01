@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
     question = Question.find(params[:question_id])
     if current_user
       @comment = Comment.new(answer: @answer)
-    else 
+    else
       flash[:notice] = "You Mustache Login To Do That"
       redirect_to question_path(question)
-    end 
+    end
   end
 
   def create
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       #add comment
       user = current_user
       params[:comment][:user_id] = user.id
-      comment = Comment.create(question_params())
+      comment = Comment.create(comment_params())
       answer.comments.push(comment)
     end
     redirect_to question_path(answer.question)
