@@ -4,7 +4,7 @@ class AuthController < ApplicationController
   def welcome
     user = current_user
     if user
-      redirect_to "/groups/#{current_user.group.id}/schedules"
+      redirect_to '/'
     else
       render "welcome"
     end
@@ -36,7 +36,11 @@ class AuthController < ApplicationController
       redirect_to '/login?error=1'
     else
       session[:user_id] = user.id
-      redirect_to questions_path
+      if session[:last_question_id]
+        redirect_to questions_path(session[:last_question_id])
+      else
+        redirect_to questions_path
+      end
     end
   end
 
