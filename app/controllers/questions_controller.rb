@@ -14,6 +14,10 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.last(LISTING_LIMIT)
     end
+    p @questions
+    p "="*30
+    p @questions.sort_by{|q| q.created_at.to_i}.reverse
+    @questions
   end
 
   def new

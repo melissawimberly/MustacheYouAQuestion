@@ -15,16 +15,13 @@
   <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
 </button> -->
 
-<div class="row pull-right">
-  <div class="row">
+<div class="col-md-offset-2 col-md-10">
   <h2><%= @question.title %></h2>
-  <div>
   By: <%= link_to @question.user.username, user_path(@question.user) %>
   <br><%= @question.description %>
-  </div>
 </div>
-  <div class="col-md-10">
-  <div class="row">
+
+  <div class="col-md-offset-2 col-md-10">
   	 <% @question.tags.each do |tag| %>
   		<!--<%= link_to tag.name, tag_path %>-->
       <!-- GG Style tags -->
@@ -33,23 +30,26 @@
 
   </div>
 
-  <div class="row">
+  <div class="col-md-offset-2 col-md-10">
     Asked On : <%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
   </div>
 
-  <div class="row">
-    <%= render partial: "answers/show", locals: { question: @question } %>
-  </div>
+  <diV class="col-md-offset-2 col-md-10"> <h4> Answers </h4></div>
 
-  <div class="row">
+
+    <% @question.answers.each do |answer|%>
+      <%= render partial: "answers/show_answer", locals: { question: @question, answer: answer } %>
+    <%end%>
+
+  <div class="col-md-offset-2 col-md-10 field-margin-top">
     <% if current_user %>
       <%= form_tag(question_answers_path(@question)) %>
           <%= text_area_tag :description %>
-          <%= submit_tag "Answer" %>
-
+          <div>
+          <%= submit_tag "Add Your Answer" %>
+          <div>
     <% end %>
   </div>
-</div>
-</div>
+
 
 

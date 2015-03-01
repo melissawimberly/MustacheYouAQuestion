@@ -15,7 +15,7 @@ question_1 = Question.create(user_id: 1, title: "fun in the sun?", description: 
 question_2 = Question.create(user_id: 1, title: "pineapples?", description: "are they viable?", view_count: 88)
 question_3 = Question.create(user_id: 1, title: "kiwi?", description: "are they viable or not???", view_count: 65)
 
-100.times do
+20.times do
   Question.create(user_id: 1, title: questions.sample, description: description, view_count: 1)
 end
 
