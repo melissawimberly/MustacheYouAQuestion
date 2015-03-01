@@ -1,10 +1,14 @@
 class CommentsController < ApplicationController
 
   def new
-
     @answer = Answer.find(params[:answer_id])
-    @comment = Comment.new(answer: @answer)
-
+    question = Question.find(params[:question_id])
+    if current_user
+      @comment = Comment.new(answer: @answer)
+    else 
+      flash[:notice] = "You Mustache Login To Do That"
+      redirect_to question_path(question)
+    end 
   end
 
   def create
