@@ -12,7 +12,7 @@ class AuthController < ApplicationController
 
   def get_login
     if params[:error]
-      @error = "Invalid email and/or password"
+      flash[:notice] = "Invalid email and/or password"
     end
     render "login"
   end
@@ -36,11 +36,8 @@ class AuthController < ApplicationController
       redirect_to '/login?error=1'
     else
       session[:user_id] = user.id
-      if session[:last_question_id]
-        redirect_to questions_path(session[:last_question_id])
-      else
-        redirect_to questions_path
-      end
+      p "-------------- #{session[:last_question_id]}"
+      redirect
     end
   end
 
@@ -60,7 +57,7 @@ class AuthController < ApplicationController
       #verify that all info is provided
       user = User.create(user_params);
       session[:user_id] = user.id
-      redirect_to questions_path
+      redirect
     rescue Exception => e
       p e
       redirect_to '/signup?error=2'
@@ -75,5 +72,13 @@ class AuthController < ApplicationController
     params.require(:user).permit(:username, :email, :password)
    end
 
+   def redirect
+    if session[:last_question_id]
+        redirect_to question_path(session[:last_question_id])
+      else
+        redirect_to questions_path
+      end
+      return false
+   end
 
 end

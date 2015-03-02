@@ -1,12 +1,14 @@
+
+
 module QuestionHelper
   DAY = 24*360
 
   def format_asked_time(question)
     formated_string = ""
-    end_time = DateTime.now
+    Time.zone= "Eastern Time (US & Canada)"
+    now = Time.zone.local_to_utc(Time.now)
 
-    start_time = question.updated_at.to_datetime
-    interval = ((end_time - start_time) * 24 * 60 * 60).to_i
+    interval = (now-question.created_at).to_i
 
     ##TODO add days
     if interval > DAY

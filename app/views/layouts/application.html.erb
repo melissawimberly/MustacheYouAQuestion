@@ -67,22 +67,23 @@
     </nav>
 
     <div class="container">
-     <% if @error  %>
-      <div class="row" id="error-panel">
-        <div class="alert alert-danger" role="alert"><%=@error%></div>
-      <div>
+
+      <!-- Start Flash -->
+      <% if flash[:notice] %>
+      <div id="mustache" class="row">
+        <div class="col-md-12" id="error-panel">
+              <div class="alert alert-danger" role="alert"><%= flash[:notice] %></div>
+        <div>
+      </div>
       <%end%>
+      <!-- End Flash -->
 
       <div class="row">
         <%= yield %>
       </div>
       <hr>
 
-      <div class="row">
-        <footer>
-          <p>&copy; DBC 2015</p>
-        </footer>
-      </div>
+
     </div> <!-- /container -->
 
 
