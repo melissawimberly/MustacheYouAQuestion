@@ -24,9 +24,17 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    params[:question][:user_id] = current_user.id
-    @question = Question.create(question_params)
-    redirect_to questions_path
+
+    if current_user == nil
+       flash[:notice] = GlobalConstants::LOGIN_ERROR
+        redirect_to new_question_path
+    else
+      @question = Question.create(question_params)
+      params[:question][:user_id] = current_user.id
+
+       redirect_to questions_path
+    end
+
   end
 
   def show

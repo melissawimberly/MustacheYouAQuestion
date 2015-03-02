@@ -19,7 +19,7 @@ class VotesController < ApplicationController
 
     question = Question.find(params[:question_id])
     if current_user == nil
-            flash[:notice] = "You Mustache Login To Do That!"
+            flash[:notice] = GlobalConstants::LOGIN_ERROR
     else
           @vote = Vote.create(user_id: current_user.id, vote_value: params[:vote_value])
           if params[:is_a]
