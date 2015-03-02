@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   LISTING_LIMIT = 10
 
   def index
+    session[:last_question_id] = nil
     tab = params[:tab]
     p "select tab #{tab}"
     @active_question_tab = GlobalConstants::TAB_OPTION_LATEST
@@ -14,6 +15,8 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.last(LISTING_LIMIT)
     end
+
+    @questions = @questions.sort_by{|q| q.created_at.to_i}.reverse
   end
 
   def new
@@ -33,11 +36,11 @@ class QuestionsController < ApplicationController
 
       @sum = QuestionVote.joins(:vote).where('question_id =?', @question.id).sum('votes.vote_value')
 
-    views = @question.view_count || 0
+      views = @question.view_count || 0
       views +=1
       @question.view_count = views;
       @question.save
-
+      session[:last_question_id] = @question.id
     # rescue Exception => e
     #   #log the error and continue
     #   p e
