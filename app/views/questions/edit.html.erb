@@ -1,0 +1,7 @@
+<div class="col-md-offset-4 col-md-4">
+  <%= form_for @question do |f| %>
+    Title: <%= f.text_field :title  %>
+    Description: <%= f.text_field :description  %>
+      <%=f.submit "Edit question"%>
+  <% end %>
+</div>

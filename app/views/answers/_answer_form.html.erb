@@ -1,0 +1,22 @@
+<div class="row field-margin-top">
+ <% if current_user %>
+                <div class='col-md-offset-3'>
+                  <% if current_user.id == answer.user_id %>
+                      <%= form_tag(question_answer_path(@question.id, answer.id), method: :put) do %>
+                        <div >Edit Your Answer:</div>
+                        <div><%= text_area_tag :description %></div>
+
+                        <div><%= submit_tag "update" %></div>
+
+
+                  <% end %>
+
+                   <%= form_tag(question_answer_path(@question.id, answer.id), method: :delete) do |f| %>
+                           <div ><%= submit_tag "delete" %></div>
+                        <% end %>
+
+                <% end %>
+              </div>
+
+<% end %>
+</div>

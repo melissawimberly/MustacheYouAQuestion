@@ -1,0 +1,4 @@
+<% @questions.each do |question| %>
+  <%= render partial: "questions/question_short" , locals: {question: question} %>
+  <hr/>
+<%end%>

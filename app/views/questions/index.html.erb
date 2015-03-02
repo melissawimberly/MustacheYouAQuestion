@@ -1,0 +1,22 @@
+<div class="row">
+<h3>Top Questions</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+  <%= link_to "Ask Question", new_question_path, class: "btn btn-warning pull-right" %>
+  </div>
+</div>
+
+<span class="field-margin"></span>
+<ul class="nav nav-tabs field-margin" >
+
+  <li role="presentation" <%=question_tab_status(GlobalConstants::TAB_OPTION_LATEST)%> > <%= link_to "Latest", '?tab='+GlobalConstants::TAB_OPTION_LATEST%></li>
+  <li role="presentation" <%=question_tab_status(GlobalConstants::TAB_OPTION_TRENDING)%> > <%= link_to "Trending", '?tab='+GlobalConstants::TAB_OPTION_TRENDING%></li>
+  <li role="presentation" <%=question_tab_status(GlobalConstants::TAB_OPTION_MOST_VOTED)%> > <%= link_to "Most Viewed", '?tab='+GlobalConstants::TAB_OPTION_MOST_VOTED %></li>
+</ul>
+
+<% @questions.each do |question| %>
+  <%= render partial: "question_short", locals: {question: question} %>
+  <hr/>
+<%end%>

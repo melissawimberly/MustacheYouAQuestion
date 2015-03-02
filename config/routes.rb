@@ -53,4 +53,26 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get '/' => 'application#index', as: :root
+
+  #TODO convert into SessionController calls and UserController calls
+  get '/login' => "auth#get_login"
+  post '/login' => "auth#post_login"
+  get '/signup' => "auth#get_signup", as: :signup_path
+  post '/signup' => "auth#post_signup"
+  get '/logout' => "auth#get_logout"
+
+  #Other Routes
+  resources :users
+  resources :questions do
+    resources :tags, shallow: true
+    resources :answers do
+      resources :comments
+      resources :votes
+
+    end
+    resources :votes
+  end
+
 end
